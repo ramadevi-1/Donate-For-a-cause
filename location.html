@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate for a Cause - Location Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .submit-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .submit-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donate for a Cause</h1>
+        <form id="locationForm">
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" required>
+                    <option value="">Select Country</option>
+                    <option value="India" selected>India</option>
+                </select>
+                <div class="error" id="countryError">Please select a country</div>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" required>
+                    <option value="">Select State</option>
+                    <!-- States will be populated by JavaScript -->
+                </select>
+                <div class="error" id="stateError">Please select a state</div>
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district" required>
+                    <option value="">Select District</option>
+                    <!-- Districts will be populated by JavaScript -->
+                </select>
+                <div class="error" id="districtError">Please select a district</div>
+            </div>
+
+            <div class="form-group">
+                <label for="street">Street</label>
+                <select id="street" required>
+                    <option value="">Select Street</option>
+                    <!-- Streets will be populated by JavaScript -->
+                </select>
+                <div class="error" id="streetError">Please select a street</div>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" readonly required>
+                <div class="error" id="pincodeError">Pincode will be generated automatically</div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn"onclick="window.location.href='food.html'" disabled>Submit</button>
+        </form>
+
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for states, districts, streets, and pincodes
+            const locationData = {
+                "Andhra Pradesh": {
+                    "districts": {
+                        "Visakhapatnam": {
+                            "streets": {
+                                "Beach Road": "530001",
+                                "Dwaraka Nagar": "530016",
+                                "MVP Colony": "530017",
+                                "Gajuwaka": "530026",
+                                "Madhurawada": "530048"
+                            }
+                        },
+                        "Vizianagaram": {
+                            "streets": {
+                                "Main Road": "535001",
+                                "Fort Area": "535002",
+                                "Gandhi Nagar": "535003"
+                            }
+                        },
+                        "Srikakulam": {
+                            "streets": {
+                                "Raja Street": "532001",
+                                "Gandhi Road": "532002"
+                            }
+                        }
+                    }
+                },
+                "Telangana": {
+                    "districts": {
+                        "Hyderabad": {
+                            "streets": {
+                                "Banjara Hills": "500034",
+                                "Jubilee Hills": "500033",
+                                "Secunderabad": "500003"
+                            }
+                        },
+                        "Warangal": {
+                            "streets": {
+                                "Hanamkonda": "506001",
+                                "Kazipet": "506003"
+                            }
+                        }
+                    }
+                },
+                "Tamil Nadu": {
+                    "districts": {
+                        "Chennai": {
+                            "streets": {
+                                "T Nagar": "600017",
+                                "Anna Nagar": "600040"
+                            }
+                        },
+                        "Coimbatore": {
+                            "streets": {
+                                "RS Puram": "641002",
+                                "Gandhipuram": "641012"
+                            }
+                        }
+                    }
+                },
+                "Karnataka": {
+                    "districts": {
+                        "Bangalore": {
+                            "streets": {
+                                "MG Road": "560001",
+                                "Indiranagar": "560038"
+                            }
+                        },
+                        "Mysore": {
+                            "streets": {
+                                "Vijaynagar": "570017",
+                                "Kuvempunagar": "570023"
+                            }
+                        }
+                    }
+                }
+            };
+
+            // DOM elements
+            const countrySelect = document.getElementById('country');
+            const stateSelect = document.getElementById('state');
+            const districtSelect = document.getElementById('district');
+            const streetSelect = document.getElementById('street');
+            const pincodeInput = document.getElementById('pincode');
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('locationForm');
+            const successMessage = document.getElementById('successMessage');
+
+            // Error elements
+            const errorElements = {
+                country: document.getElementById('countryError'),
+                state: document.getElementById('stateError'),
+                district: document.getElementById('districtError'),
+                street: document.getElementById('streetError'),
+                pincode: document.getElementById('pincodeError')
+            };
+
+            // Populate states on page load
+            populateStates();
+
+            // Event listeners
+            stateSelect.addEventListener('change', function() {
+                populateDistricts();
+                clearDownstreamFields('state');
+                validateForm();
+            });
+
+            districtSelect.addEventListener('change', function() {
+                populateStreets();
+                clearDownstreamFields('district');
+                validateForm();
+            });
+
+            streetSelect.addEventListener('change', function() {
+                populatePincode();
+                validateForm();
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (validateForm(true)) {
+                    // Show success message
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Simulate redirect after 2 seconds
+                    setTimeout(function() {
+                        window.location.href = "next-page.html"; // Change to your next page URL
+                    }, 2000);
+                }
+            });
+
+            // Function to populate states
+            function populateStates() {
+                stateSelect.innerHTML = '<option value="">Select State</option>';
+                for (const state in locationData) {
+                    const option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                }
+            }
+
+            // Function to populate districts based on selected state
+            function populateDistricts() {
+                districtSelect.innerHTML = '<option value="">Select District</option>';
+                const selectedState = stateSelect.value;
+                
+                if (selectedState && locationData[selectedState]) {
+                    for (const district in locationData[selectedState].districts) {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    }
+                }
+            }
+
+            // Function to populate streets based on selected district
+            function populateStreets() {
+                streetSelect.innerHTML = '<option value="">Select Street</option>';
+                const selectedState = stateSelect.value;
+                const selectedDistrict = districtSelect.value;
+                
+                if (selectedState && selectedDistrict && 
+                    locationData[selectedState] && 
+                    locationData[selectedState].districts[selectedDistrict]) {
+                    
+                    for (const street in locationData[selectedState].districts[selectedDistrict].streets) {
+                        const option = document.createElement('option');
+                        option.value = street;
+                        option.textContent = street;
+                        streetSelect.appendChild(option);
+                    }
+                }
+            }
+
+            // Function to populate pincode based on selected street
+            function populatePincode() {
+                const selectedState = stateSelect.value;
+                const selectedDistrict = districtSelect.value;
+                const selectedStreet = streetSelect.value;
+                
+                if (selectedState && selectedDistrict && selectedStreet && 
+                    locationData[selectedState] && 
+                    locationData[selectedState].districts[selectedDistrict] && 
+                    locationData[selectedState].districts[selectedDistrict].streets[selectedStreet]) {
+                    
+                    pincodeInput.value = locationData[selectedState].districts[selectedDistrict].streets[selectedStreet];
+                } else {
+                    pincodeInput.value = '';
+                }
+            }
+
+            // Function to clear downstream fields when upstream selection changes
+            function clearDownstreamFields(changedField) {
+                if (changedField === 'state') {
+                    districtSelect.value = '';
+                    streetSelect.value = '';
+                    pincodeInput.value = '';
+                } else if (changedField === 'district') {
+                    streetSelect.value = '';
+                    pincodeInput.value = '';
+                }
+            }
+
+            // Function to validate the form
+            function validateForm(showErrors = false) {
+                let isValid = true;
+                
+                // Validate country
+                if (!countrySelect.value) {
+                    if (showErrors) errorElements.country.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElements.country.style.display = 'none';
+                }
+                
+                // Validate state
+                if (!stateSelect.value) {
+                    if (showErrors) errorElements.state.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElements.state.style.display = 'none';
+                }
+                
+                // Validate district
+                if (!districtSelect.value) {
+                    if (showErrors) errorElements.district.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElements.district.style.display = 'none';
+                }
+                
+                // Validate street
+                if (!streetSelect.value) {
+                    if (showErrors) errorElements.street.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElements.street.style.display = 'none';
+                }
+                
+                // Validate pincode
+                if (!pincodeInput.value) {
+                    if (showErrors) errorElements.pincode.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElements.pincode.style.display = 'none';
+                }
+                
+                // Enable/disable submit button based on validation
+                submitBtn.disabled = !isValid;
+                
+                return isValid;
+            }
+
+            // Initial validation check
+            validateForm();
+        });
+    </script>
+</body>
+</html>

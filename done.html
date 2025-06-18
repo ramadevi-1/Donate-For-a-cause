@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You for Donating</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Background Image */
+    .background {
+      background-image: url('donepic.jpeg'); /* Replace with your desired image */
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .message-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .message-container h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .message-container p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .done-btn {
+      padding: 12px 30px;
+      background-color: #2d89ef;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .done-btn:hover {
+      background-color: #1b5fad;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .message-container {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background">
+    <div class="message-container">
+      <h2>Thank You for Donating!</h2>
+      <p>Your generous donation is greatly appreciated. Our organization will soon reach your address and get in touch with you regarding the next steps. Your support helps us make a difference in the lives of many. We truly appreciate your contribution!</p>
+      
+      <!-- Done Button -->
+      <button onclick="window.location.href='/';" class="done-btn"><a href=home1.html>Done</a></button>
+    </div>
+  </div>
+
+</body>
+</html>

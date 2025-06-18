@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Donations</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    header {
+      background-color: #2d89ef;
+      color: white;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: white;
+      color: #2d89ef;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .donation-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 40px;
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    .donation-box {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .donation-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .donation-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .donation-box-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .donation-box h1 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .donation-box p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .donate-btn {
+      padding: 12px 20px;
+      background-color: #2d89ef;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .donate-btn:hover {
+      background-color: #1b5fad;
+    }
+
+    /* About Us Section */
+    .about-section {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      margin-top: 30px;
+      width: 80%;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #2d89ef;
+      text-align: center;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .donation-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .donation-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      "Together, We Can Make a Difference—Donate Today"
+    </div>
+    <div class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#contact">Help / Contact</a>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <div class="donation-container">
+
+      <div class="donation-box">
+        <img src="foodpic.jpeg" alt="Donate Food">
+        <div class="donation-box-content">
+          <h1>Donate Food</h1>
+          <p>"If you can't feed a hundred people, then feed just one." </p>
+          <button class="donate-btn" onclick="window.location.href='location.html'">Donate</button>
+        </div>
+      </div>
+
+      <div class="donation-box">
+        <img src="bookspic.jpeg" alt="Donate Books">
+        <div class="donation-box-content">
+          <h1>Donate Books</h1>
+          <p>"When you donate a book, you donate a dream."</p>
+          <button class="donate-btn" onclick="window.location.href='locationb.html'">Donate</button>
+        </div>
+      </div>
+
+      <div class="donation-box">
+        <img src="clothespic.jpeg" alt="Donate Clothes">
+        <div class="donation-box-content">
+          <h1>Donate Clothes</h1>
+          <p>"Giving clothes is not about charity. It’s about dignity."</p>
+          <button class="donate-btn"onclick="window.location.href='locationc.html'" >Donate</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- About Us Section -->
+    <div class="about-section" id="about">
+      <h2>About Us</h2>
+      <p>
+        Welcome to our donation platform—a community-driven initiative that bridges the gap between those who want to help and those in need. Our mission is to empower individuals and families by providing access to essential resources like food, books, and clothing. Whether it's a warm meal, a storybook for a child, or a clean outfit, every donation you make helps restore hope and dignity.
+        <br><br>
+        We partner with local NGOs, orphanages, and community centers to ensure your contributions reach the right hands. Our platform offers a simple and transparent way to contribute with purpose. With easy navigation and dedicated donation pages, we make it effortless for you to be a part of the change.
+        <br><br>
+        Thank you for joining hands with us. Your generosity fuels our mission and strengthens our community. Together, we can uplift lives and build a better tomorrow—one donation at a time.
+      </p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="about-section" id="contact">
+      <h2>Help / Contact</h2>
+      <p>
+        For any questions, assistance, or to partner with us, please feel free to reach out:
+        <br><br>
+        📧 Email: support@donationplatform.org<br>
+        📞 Phone: +91-9876543210<br>
+        📍 Address: 123 Community Street, Hyderabad, Telangana, India
+        <br><br>
+        We're here to help you make the donation process smooth and impactful. Don't hesitate to contact us with any feedback or inquiries.
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
