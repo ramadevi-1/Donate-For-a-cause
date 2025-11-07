@@ -47,5 +47,3 @@ Contributing:
 
 - Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-- Email: your-email@example.com
-- GitHub: your-github-username
